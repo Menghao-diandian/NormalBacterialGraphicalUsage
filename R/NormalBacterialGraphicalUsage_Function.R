@@ -1,4 +1,4 @@
-ImportData <- function (myfile, ...){
+ImportData <- function (myfile){
   # Import experiment data 
   myData <- read.csv(myfile, header = TRUE)
   return (myData)
@@ -9,8 +9,7 @@ Cal <- function (myData,
                  rep = 3, 
                  measurementPos, 
                  strainName,
-                 conditionName,
-                 ...){
+                 conditionName){
   # Calculate mean
   Measurement <- myData[measurementPos][,1]
   myMean <- c()
@@ -41,8 +40,7 @@ BarPlot <- function (myData,
                      measurementPos, 
                      strainName,
                      conditionName, 
-                     ylabName,
-                     ...) {
+                     ylabName) {
   myMeanSD <- Cal(myData,
                   rep=3, 
                   measurementPos, 
@@ -68,8 +66,7 @@ GrowthCurve <- function (myData,
                          rep = 3, 
                          measurementPos, 
                          strainName,
-                         conditionName, 
-                         ...) {
+                         conditionNam) {
   myMeanSD <- Cal(myData,
                   rep=3, 
                   measurementPos=3, 
@@ -99,4 +96,5 @@ GrowthCurve <- function (myData,
    }
     i <- i + 1
   }
+  box()
 }

@@ -1,0 +1,12 @@
+Package: NormalBacterialGraphicalUsage
+Version: 0.0
+Date: 2017-12-14
+Title: Normal Bacterial Graphical Usage
+Authors@R: person("Menghao", "Yu", role = c("aut", "cre"),
+                  email = "myu37@illinois.edu")
+Author: Menghao Yu [aut, cre]
+Maintainer: Menghao Yu <myu37k@illinois.edu>
+Description: This package includes functions to import experiment data, calculate mean and standard 
+devidation of the data, create bar plot and bacterial growth curve. 
+Url: https://github.com/Menghao-diandian/NormalBacterialGraphicalUsage
+License: GPL-3

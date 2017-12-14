@@ -1,92 +1,64 @@
 \name{Cal}
+
 \alias{Cal}
 \alias{BarPlot}
 \alias{GrowthCurve}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{
-%%  ~~function to do ... ~~
+CREATE BAR PLOT OR BACTERIAL GROWTH CURVE
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Cal calculates mean and standard deviation of imported data. 
+BarPlot creates bar plot for normal phenotypic assays in several testing groups. 
+GrowthCurve creates line chart to show bacterial growth condition. 
 }
+
 \usage{
-Cal(myData, rep = 3, measurementPos, strainName, conditionName, ...)
-BarPlot <- function (myData, rep = 3, measurementPos, strainName, conditionName, ylabName, ...)
-GrowthCurve <- function (myData, rep = 3, measurementPos, strainName, conditionName, ...)
+Cal(myData, rep = 3, measurementPos, strainName, conditionName)
+BarPlot <- function (myData, rep = 3, measurementPos, strainName, conditionName, ylabName)
+GrowthCurve <- function (myData, rep = 3, measurementPos, strainName, conditionName)
 }
-%- maybe also 'usage' for other objects documented here.
+
 \arguments{
   \item{myData}{
-%%     ~~Describe \code{myData} here~~
+Imported experiment data
 }
   \item{rep}{
-%%     ~~Describe \code{rep} here~~
+Replication of each experiment setting
 }
   \item{measurementPos}{
-%%     ~~Describe \code{measurementPos} here~~
+Number of the column which stores measurement
 }
   \item{strainName}{
-%%     ~~Describe \code{strainName} here~~
+Name of tested strains
 }
   \item{conditionName}{
-%%     ~~Describe \code{conditionName} here~~
+Tested conditions
 }
-  \item{\dots}{
-%%     ~~Describe \code{\dots} here~~
+  \item{ylabname}{
+Name of y-axis in exported bar plot
 }
 }
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
+
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+Cal returns a list. 
+\item{comp_1}{mean of each tested group}
+\item{comp_2}{standard deviation of each tested group}
+BarPlot a bar plot indicating the difference of several bacterial strains in several conditions. 
+GrowthCurve a line chart indicating the growth condition of several bacterial strains. 
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
+
 \author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
+Menghao Yu
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
-\seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
-}
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+Test1 <- ImportData("Test1.csv")
+Test2 <- ImportData("Test2.csv")
 
-## The function is currently defined as
-function (myData, rep = 3, measurementPos, strainName, conditionName, 
-    ...) 
-{
-    Measurement <- myData[measurementPos][, 1]
-    myMean <- c()
-    while (length(Measurement) > 0) {
-        thisMean <- mean(Measurement[1:rep])
-        Measurement <- Measurement[-(1:rep)]
-        myMean <- c(myMean, thisMean)
-    }
-    Measurement <- myData[measurementPos][, 1]
-    mySD <- c()
-    while (length(Measurement) > 0) {
-        thisSD <- sd(Measurement[1:rep])
-        Measurement <- Measurement[-(1:rep)]
-        mySD <- c(mySD, thisSD)
-    }
-    return(list(myMean, mySD))
-  }
+CalResult <- Cal(myData = Test1, rep = 3, measurementPos = 3, strainName = c("WT", "clpXP", "clpXP(pXP)"), conditionName = c("24", "48"))
+
+BarPlot <- function (myData =  Test1, rep = 3, measurementPos = 3, strainName = c("WT", "clpXP", "clpXP(pXP)"), conditionName = c(24, 48), ylabName = "Distance (mm)")
+
+GrowthCurve <- function (myData = Test2, rep = 3, measurementPos = 3, strainName = c("WT(p)", "#3(p)", "#3(pT)"), conditionName = c(3, 6, 9, 12, 15, 18, 21, 24))
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
