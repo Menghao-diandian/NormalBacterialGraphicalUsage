@@ -7,6 +7,6 @@ Authors@R: person("Menghao", "Yu", role = c("aut", "cre"),
 Author: Menghao Yu [aut, cre]
 Maintainer: Menghao Yu <myu37k@illinois.edu>
 Description: This package includes functions to import experiment data, calculate mean and standard 
-devidation of the data, create bar plot and bacterial growth curve. 
+  devidation of the data, create bar plot and bacterial growth curve. 
 Url: https://github.com/Menghao-diandian/NormalBacterialGraphicalUsage
 License: GPL-3
