@@ -53,12 +53,10 @@ Menghao Yu
 }
 
 \examples{
-Test1 <- ImportData("Test1.csv")
-Test2 <- ImportData("Test2.csv")
-
+Test1 <- data(Test1)
 CalResult <- Cal(myData = Test1, rep = 3, measurementPos = 3, strainName = c("WT", "clpXP", "clpXP(pXP)"), conditionName = c("24", "48"))
-
 BarPlot <- function (myData =  Test1, rep = 3, measurementPos = 3, strainName = c("WT", "clpXP", "clpXP(pXP)"), conditionName = c(24, 48), ylabName = "Distance (mm)")
 
+Test2 <- data(Test2)
 GrowthCurve <- function (myData = Test2, rep = 3, measurementPos = 3, strainName = c("WT(p)", "#3(p)", "#3(pT)"), conditionName = c(3, 6, 9, 12, 15, 18, 21, 24))
 }

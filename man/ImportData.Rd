@@ -28,5 +28,9 @@ Menghao Yu
 }
 
 \examples{
-ImportData("Test1.csv")
-ImportData("Test2.csv")
+test1 <- c(1:5, "6,7", "8,9,10")
+tf <- tempfile()
+writeLines(test1, tf)
+
+ImportData(tf)
+}
