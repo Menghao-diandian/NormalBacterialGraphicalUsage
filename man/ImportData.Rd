@@ -28,9 +28,16 @@ Menghao Yu
 }
 
 \examples{
-test1 <- c(1:5, "6,7", "8,9,10")
-tf <- tempfile()
-writeLines(test1, tf)
+##---- Should be DIRECTLY executable !! ----
+##-- ==>  Define data, use random,
+##--	or do  help(data=index)  for the standard data sets.
 
-ImportData(tf)
+## The function is currently defined as
+function (myfile) 
+{
+    myData <- read.csv(myfile, header = TRUE)
+    return(myData)
+  }
+  
+ImportData(data(Test1))
 }

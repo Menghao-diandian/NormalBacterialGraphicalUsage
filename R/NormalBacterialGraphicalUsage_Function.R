@@ -11,7 +11,7 @@ Cal <- function (myData,
                  strainName,
                  conditionName){
   # Calculate mean
-  Measurement <- myData[measurementPos]#[,1]
+  Measurement <- as.list(myData[measurementPos])
   myMean <- c()
   while (length(Measurement) > 0){
     thisMean <- mean (Measurement[1:rep])
@@ -19,7 +19,7 @@ Cal <- function (myData,
     myMean <- c(myMean, thisMean)
   }
   # Calculate sd
-  Measurement <- myData[measurementPos]#[,1]
+  Measurement <- as.list(myData[measurementPos])
   mySD <- c()
   while (length(Measurement) > 0){
     thisSD <- sd (Measurement[1:rep])
@@ -66,7 +66,7 @@ GrowthCurve <- function (myData,
                          rep = 3, 
                          measurementPos, 
                          strainName,
-                         conditionNam) {
+                         conditionName) {
   myMeanSD <- Cal(myData,
                   rep=3, 
                   measurementPos=3, 
