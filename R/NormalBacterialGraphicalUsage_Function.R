@@ -45,7 +45,6 @@ CalSD <- function (myData,
   return (SDMatrix)
 }
 
-# Bar plot
 BarPlot <- function (myData, 
                      rep = 3, 
                      measurementPos, 
@@ -67,7 +66,6 @@ BarPlot <- function (myData,
   box()
 }
 
-# Growth curve 
 GrowthCurve <- function (myData, 
                          rep = 3, 
                          measurementPos, 
