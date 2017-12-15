@@ -42,5 +42,7 @@ Menghao Yu
 
 \examples{
 data(Test2)
-GrowthCurve (Test2, rep = 3, measurementPos = 3, strainName = c("WT(p)", "#3(p)", "#3(pT)"), timePoint = c(3, 6, 9, 12, 15, 18, 21, 24))
+a <- c("WT(p)", "#3(p)", "#3(pT)")
+b <- c(3, 6, 9, 12, 15, 18, 21, 24)
+GrowthCurve (Test2, rep = 3, measurementPos = 3, strainName = a, timePoint = b)
 }

@@ -70,7 +70,6 @@ GrowthCurve <- function (myData,
                          measurementPos, 
                          strainName,
                          timePoint) {
-  
   meanMatrix <- CalMean (myData, 
                          rep = 3, 
                          measurementPos, 
