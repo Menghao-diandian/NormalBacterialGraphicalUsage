@@ -1,7 +1,7 @@
 ImportData <- function (myfile){
   # Import experiment data 
-  file <- read.csv(myfile, header = TRUE)
-  return (file)
+  myfile <- read.csv(myfile, header = TRUE)
+  return (myfile)
 }
 
 CalMean <- function (myData,
