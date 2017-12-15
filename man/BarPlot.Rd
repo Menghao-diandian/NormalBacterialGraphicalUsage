@@ -7,7 +7,7 @@ CREATE BAR PLOT
 }
 
 \description{
-BarPlot creates bar plot for normal phenotypic assays in several testing groups.
+  BarPlot creates bar plot for normal phenotypic assays in several testing groups.
 }
 
 \usage{
@@ -16,7 +16,7 @@ BarPlot(myData, rep = 3, measurementPos, strainName, conditionName, ylabName)
 
 \arguments{
   \item{myData}{
-Imported experiment data
+Imported experiment data, refer to data(Test1) for proper format
 }
   \item{rep}{
 Replication of each experiment setting

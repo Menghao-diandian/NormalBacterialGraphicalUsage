@@ -3,11 +3,11 @@
 \alias{GrowthCurve}
 
 \title{
-Create Bacterial Growth Curve
+CREATE BACTERIAL GROWTH CURVE
 }
 
 \description{
-GrowthCurve creates line chart to show bacterial growth condition. 
+  GrowthCurve creates line chart to show bacterial growth condition. 
 }
 
 \usage{
@@ -16,7 +16,7 @@ GrowthCurve(myData, rep = 3, measurementPos, strainName, timePoint)
 
 \arguments{
   \item{myData}{
-Imported experiment data
+Imported experiment data, refer to data(Test2) for proper format
 }
   \item{rep}{
 Replication of each experiment setting

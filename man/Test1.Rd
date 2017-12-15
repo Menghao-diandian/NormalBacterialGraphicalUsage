@@ -2,19 +2,19 @@
 \alias{Test1}
 \docType{data}
 \title{
-Distance between Bacteria and Petri Dish Edge 
+BACTERIAL MOVING DISTANCE DATA 
 }
 \description{
-  This dataset gives the distance between bacteria and the petri dish of 18 
-  observations. 3 replications in each different setting. 
+  This dataset gives the moving distance of 18  observations. 3 replications 
+  in  each different setting. 
 }
 \usage{data("Test1")}
 \format{
   A data frame with 18 observations on the following 3 variables.
   \describe{
-    \item{\code{Strain}}{a character vector}
-    \item{\code{Time}}{a numeric vector}
-    \item{\code{Distance}}{a numeric vector}
+    \item{\code{Strain}}{a character vector containg the name of tested strains}
+    \item{\code{Time}}{a numeric vector containing measuring timepoint}
+    \item{\code{Distance}}{a numeric vector containing measuring results}
   }
 }
 \keyword{datasets}

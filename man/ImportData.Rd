@@ -6,7 +6,7 @@ IMPORT EXPRERIMENT RESULTS
 }
 
 \description{
-Import experiment results. 
+  Import experiment results 
 }
 
 \usage{
@@ -15,7 +15,7 @@ ImportData(myfile)
 
 \arguments{
   \item{myfile}{
-myfile is the name of a csv file, the file should currently under working directory
+myfile is the name of a csv file, refer to data(Test1) for proper format, the file should currently under working directory
 }
 }
 
@@ -28,6 +28,6 @@ Menghao Yu
 }
 
 \examples{
-data(Test1)
-ImportData(Test1)
+mypath <- system.file ("extdata", "Test1.csv", package = "NormalBacterialGraphicalUsage")
+ImportData(mypath)
 }

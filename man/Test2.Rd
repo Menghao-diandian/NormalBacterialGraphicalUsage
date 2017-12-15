@@ -2,7 +2,7 @@
 \alias{Test2}
 \docType{data}
 \title{
-Bacterial Growth
+BACTERIAL GROWTH DATA
 }
 \description{
   This dataset gives the bacterial growth data over 24 h, including 72 observation.
@@ -12,9 +12,9 @@ Bacterial Growth
 \format{
   A data frame with 72 observations on the following 3 variables.
   \describe{
-    \item{\code{Strain}}{a character vector}
-    \item{\code{Time}}{a numeric vector}
-    \item{\code{OD600}}{a numeric vector}
+    \item{\code{Strain}}{a character vector containing the name of tested strains}
+    \item{\code{Time}}{a numeric vector containing measuring timepoint}
+    \item{\code{OD600}}{a numeric vector containing measuring results}
   }
 }
 \keyword{datasets}

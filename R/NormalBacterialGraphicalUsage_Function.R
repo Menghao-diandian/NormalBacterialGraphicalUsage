@@ -1,9 +1,8 @@
 ImportData <- function (myfile){
   # Import experiment data 
-  myData <- read.csv(myfile, header = TRUE)
-  return (myData)
+  file <- read.csv(myfile, header = TRUE)
+  return (file)
 }
-
 
 CalMean <- function (myData,
                      rep = 3, 
@@ -51,7 +50,7 @@ BarPlot <- function (myData,
                      strainName,
                      conditionName, 
                      ylabName) {
-  meanMatrix <- CalMean (myData, 
+  meanMatrix <- CalMean (file, 
                          rep, 
                          measurementPos, 
                          strainName,
@@ -71,6 +70,7 @@ GrowthCurve <- function (myData,
                          measurementPos, 
                          strainName,
                          timePoint) {
+  
   meanMatrix <- CalMean (myData, 
                          rep = 3, 
                          measurementPos, 

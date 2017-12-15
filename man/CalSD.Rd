@@ -3,10 +3,10 @@
 \alias{CalSD}
 
 \title{
-Calculate Mean
+CALCULATE STANDARD DEVIATION
 }
 \description{
-CalSD calculates standard deviation of imported data
+  CalSD calculates standard deviation of imported data
 }
 \usage{
 CalSD(myData, rep = 3, measurementPos, strainName, conditionName)
@@ -14,7 +14,7 @@ CalSD(myData, rep = 3, measurementPos, strainName, conditionName)
 
 \arguments{
   \item{myData}{
-Imported experiment data
+Imported experiment data, refer to data(Test1) for proper format
 }
   \item{rep}{
 Replication of each experiment setting
@@ -31,7 +31,7 @@ Tested conditions
 }
 
 \value{
-CalSD returns standard deviation of each tested group
+CalSD returns standard deviation of each tested group in a matrix
 }
 
 \author{
