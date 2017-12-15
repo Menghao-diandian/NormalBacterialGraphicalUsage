@@ -44,26 +44,6 @@ Menghao Yu
 }
 
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (myData, rep = 3, measurementPos, strainName, conditionName, 
-    ylabName) 
-{
-    myMeanSD <- Cal(myData, rep = 3, measurementPos, strainName, 
-        conditionName)
-    myMean <- myMeanSD[[1]]
-    meanMatrix <- matrix(myMean, nrow = length(strainName), ncol = length(conditionName), 
-        byrow = TRUE, dimnames = list(strainName, conditionName))
-    barplot(t(meanMatrix), ylab = ylabName, legend = conditionName, 
-        col = heat.colors(length(conditionName)), beside = TRUE, 
-        ylim = c(0, 1.5 * (max(myMean))))
-    box()
-  }
-
-Test1 <- data(Test1)
-BarPlot <- function (myData =  Test1, rep = 3, measurementPos = 3, strainName = c("WT", "clpXP", "clpXP(pXP)"), conditionName = c(24, 48), ylabName = "Distance (mm)")
-
+data(Test1)
+BarPlot (Test1, rep = 3, measurementPos = 3, strainName = c("WT", "clpXP", "clpXP(pXP)"), conditionName = c(24, 48), ylabName = "Distance (mm)")
 }

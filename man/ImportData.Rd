@@ -28,16 +28,6 @@ Menghao Yu
 }
 
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (myfile) 
-{
-    myData <- read.csv(myfile, header = TRUE)
-    return(myData)
-  }
-  
-ImportData(data(Test1))
+data(Test1)
+ImportData(Test1)
 }

@@ -1,6 +1,7 @@
-export(ImportData, Cal, BarPlot, GrowthCurve)
+export(ImportData, CalMean, CalSD, BarPlot, GrowthCurve)
 
 importFrom("grDevices", "heat.colors")
 importFrom("graphics", "barplot", "box", "plot", "points")
 importFrom("stats", "sd")
 importFrom("utils", "read.csv")
+importFrom("graphics", "axis", "legend")
