@@ -50,7 +50,7 @@ BarPlot <- function (myData,
                      strainName,
                      conditionName, 
                      ylabName) {
-  meanMatrix <- CalMean (file, 
+  meanMatrix <- CalMean (myData, 
                          rep, 
                          measurementPos, 
                          strainName,
