@@ -5,8 +5,8 @@
 BACTERIAL GROWTH DATA
 }
 \description{
-  This dataset gives the bacterial growth data over 24 h, including 72 observation.
-  3 replications in each time point. 
+  This dataset gives the bacterial growth data over 24 h (3-h interval), 
+  including 72 observations, 3 replications in each time point. 
 }
 \usage{data("Test2")}
 \format{

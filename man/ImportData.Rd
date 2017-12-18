@@ -11,42 +11,45 @@ NORMAL BACTERIAL GRAPHICAL USAGE
 }
 
 \description{
-  ImportData function import and check experiment data
-  CalMean calculates mean of imported data
-  CalSD calculates standard deviation of imported data
+  ImportData function imports and checks experiment data.
+  CalMean calculates mean of imported data.
+  CalSD calculates standard deviation of imported data.
   BarPlot creates bar plot for normal phenotypic assays in several testing
-  groups
-  GrowthCurve creates line chart to show bacterial growth condition
+  groups.
+  GrowthCurve creates line chart to show bacterial growth condition.
 }
 
 \usage{
 ImportData(myfile, rep, measurementPos, strainName, conditionName)
-CalMean(myData, rep, measurementPos, StrainColName, conditionColName, 
+CalMean(myData, measurementPos, StrainColName = "Strain", conditionColName,
+strainName,conditionName)
+CalSD(myData, measurementPos, StrainColName = "Strain", conditionColName, 
 strainName, conditionName)
-CalSD(myData, rep, measurementPos, StrainColName, conditionColName, 
-strainName, conditionName)
-BarPlot(myData, rep, measurementPos, StrainColName, conditionColName,
+BarPlot(myData, measurementPos, StrainColName = "Strain", conditionColName,
 strainName, conditionName, ylabName)
-GrowthCurve(myData, rep, measurementPos, StrainColName, conditionColName,
-strainName, timePoint)
+GrowthCurve(myData, measurementPos, StrainColName = "Strain", 
+conditionColName, strainName, timePoint)
 }
 
 \arguments{
   \item{myfile}{
-myfile is the name of a csv file, refer to data(Test1) for proper format
+myfile is the name of a csv file, refer to data(Test1) for proper format, 
+missing data is not allowed
 }
   \item{rep}{
 Replication number of each experiment setting, should be same among 
 all settings
 }
   \item{measurementPos}{
-Number of the column which stores measurement
+Number of the column which stores measurement data
 }
   \item{strainName}{
-Name of tested strains selected to be plotted
+Name of tested strains selected to be plotted.
+In GrowthCurve funciton, the length of strainName should be larger than 1.
 }
   \item{conditionName}{
-Tested conditions selected to be plotted
+Tested conditions selected to be plotted.
+In GrowthCurve funciton, the length of conditionName should be larger than 1.
 }
   \item{myData}{
 Imported experiment data, refer to data(Test1) for proper format
@@ -66,9 +69,9 @@ Time point at which OD600 is measured
 }
 
 \value{
-ImportData returns the content of the imported data
-CalMean returns mean of each tested group in a matrix
-CalSD returns standard deviation of each tested group in a matrix
+ImportData returns the content of the imported data.
+CalMean returns mean of each tested group in a matrix.
+CalSD returns standard deviation of each tested group in a matrix.
 BarPlot a bar plot indicating the difference of several bacterial 
 strains in several conditions.
 GrowthCurve a line chart indicating the growth condition of several 
@@ -89,17 +92,19 @@ ImportData (mypath, rep = 3, measurementPos = 3,
             strainName = a, conditionName = b)
 
 data(Test1)
-CalMean (Test1, rep = 3, measurementPos = 3, 
+CalMean (Test1, measurementPos = 3, 
          StrainColName = "Strain", 
          conditionColName = "Time", 
-         strainName = a, conditionName = b)
+         strainName = a,
+         conditionName = b)
          
-CalSD (Test1, rep = 3, measurementPos = 3, 
+CalSD (Test1, measurementPos = 3, 
        StrainColName = "Strain", 
-       conditionColName = "Time", 
-       strainName = a, conditionName = b)
+       conditionColName = "Time",
+       strainName = a,
+       conditionName = b)
 
-BarPlot (Test1, rep = 3, measurementPos = 3, 
+BarPlot (Test1, measurementPos = 3, 
          StrainColName = "Strain", 
          conditionColName = "Time", 
          strainName = a, conditionName = b, 
@@ -108,7 +113,7 @@ BarPlot (Test1, rep = 3, measurementPos = 3,
 data(Test2)
 d <- c("WT(p)", "#3(p)", "#3(pT)")
 e <- c(3, 6, 9, 12, 15, 18, 21, 24)
-GrowthCurve (Test2, rep = 3, measurementPos = 3, 
+GrowthCurve (Test2, measurementPos = 3, 
              StrainColName = "Strain", 
              conditionColName = "Time",
              strainName = d, timePoint = e)

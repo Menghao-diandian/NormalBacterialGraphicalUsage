@@ -12,58 +12,57 @@ ImportData <- function (myfile,
   # In this function, non-neccessary data are allowed to import, however, 
   # all experment setting must include the same number of replications, 
   # no missing is allowed.  
+  
   myfile <- read.csv(myfile, header = TRUE) # Import data
   
   # Imported data should include proper number of data
   measurementNumber <- length(myfile[[measurementPos]])
   CalMeasurementNumber <- rep * length(strainName)*length(conditionName)
   Measurement <- myfile[[measurementPos]]
+  
+  # No missing data
   if (sum(is.na(Measurement)) != 0) {
     stop ("No missing data is allowed!")
   }
+  
+  # All experiment should have the same number of replication
   if ((measurementNumber %% rep) != 0) {
     stop ("Mismatches exist in imported data, 
           please import the results of all replication!")
   }
+  
+  # Non-necessary data is allowed
   if (measurementNumber != CalMeasurementNumber) {
     warning ("Possible mismatches exist in imported data, 
              please ignore this if not all data is used in your plot.")
   }
+  
   return (myfile)
 }
 
 CalMean <- function (myData,
-                     rep = 3, 
                      measurementPos,
                      StrainColName = "Strain",
-                     conditionColName, 
+                     conditionColName,
                      strainName,
                      conditionName){
   # This function is used to calculate the mean of each experiment setting 
   # and return a matrix of this mean result
   # StrainColName stores the name of the column which stores strain name
   # conditionColName stores the name of the column which stores testing condition
-  meanMatrix <- matrix( , length(strainName), 
-                        length(conditionName),
-                        dimnames = list (strainName, conditionName))
-  i <- 1
-  j <- 1
-  while (i <= length(strainName)){
-    while (j <= length(conditionName)){
-      meanMatrix[i, j] <- tapply(myData[[measurementPos]],
-                                 (myData[StrainColName] == strainName[i])
-                                 & (myData[conditionColName] == conditionName[j]),
-                                 mean)[2]
-      j <- j+1
-    }
-    i <- i+1
-    j <- 1
-  }
+
+  meanMatrix <- tapply (myData[[measurementPos]], 
+                        INDEX = list (myData[[StrainColName]], 
+                                      myData[[conditionColName]]), 
+                        mean)
+  
+  meanMatrix <- meanMatrix[strainName, 
+                           as.character(conditionName)]
+  
   return (meanMatrix)
 }
 
 CalSD <- function (myData,
-                   rep = 3, 
                    measurementPos, 
                    StrainColName = "Strain",
                    conditionColName,
@@ -71,27 +70,19 @@ CalSD <- function (myData,
                    conditionName) {
   # This function is used to calculate the standard deviation of each experiment setting 
   # and return a matrix of this standard deviation result
-  SDMatrix <- matrix( , length(strainName), 
-                        length(conditionName),
-                        dimnames = list (strainName, conditionName))
-  i <- 1
-  j <- 1
-  while (i <= length(strainName)){
-    while (j <= length(conditionName)){
-      SDMatrix[i, j] <- tapply(myData[[measurementPos]],
-                               (myData[StrainColName] == strainName[i])
-                               & (myData[conditionColName] == conditionName[j]),
-                               sd)[2]
-      j <- j+1
-    }
-    i <- i+1
-    j <- 1
-  }
-  return (SDMatrix)
-}
+  
+  SDMatrix <- tapply (myData[[measurementPos]], 
+                      INDEX = list (myData[[StrainColName]], 
+                                    myData[[conditionColName]]), 
+                      sd)
+  
+  SDMatrix <- SDMatrix[strainName,
+                       as.character(conditionName)]
+
+   return (SDMatrix)
+ }
 
 BarPlot <- function (myData, 
-                     rep = 3, 
                      measurementPos, 
                      StrainColName = "Strain",
                      conditionColName,
@@ -104,12 +95,12 @@ BarPlot <- function (myData,
   
   # Get the mean matrix
   meanMatrix <- CalMean (myData, 
-                         rep, 
                          measurementPos, 
                          StrainColName,
                          conditionColName,
                          strainName,
                          conditionName)
+  
   # Draw the bar plot
   barplot(t(meanMatrix), 
           ylab = ylabName, 
@@ -117,11 +108,11 @@ BarPlot <- function (myData,
           col=heat.colors(length(conditionName)), 
           beside = TRUE,
           ylim = c(0, 1.5*(max(as.vector(meanMatrix)))))
+  
   box()
 }
 
 GrowthCurve <- function (myData, 
-                         rep = 3, 
                          measurementPos, 
                          StrainColName = "Strain",
                          conditionColName,
@@ -133,7 +124,6 @@ GrowthCurve <- function (myData,
   
   # Get the mean matrix
   meanMatrix <- CalMean (myData,
-                         rep = 3, 
                          measurementPos, 
                          StrainColName,
                          conditionColName,
@@ -142,13 +132,14 @@ GrowthCurve <- function (myData,
   
   # Draw the growth curve
   i <- 1
-  while (i <= length(strainName)){
+  while (i <= length(strainName)){ # draw the growth curve of the 1st strain
     if (i == 1){
       plot(x = colnames(meanMatrix), 
            y = meanMatrix[1,], 
            type = "o", 
            xlab = "Time(h)", 
            ylab = "OD600", 
+           ylim = c(0, max(meanMatrix)*1.2),
            pch = 1, 
            xaxt="n")
       legend (x = min(timePoint), 
@@ -156,16 +147,16 @@ GrowthCurve <- function (myData,
               legend = strainName[1], 
               pch = 1, bty = "n")
       axis (side = 1, at = timePoint)
-      } else {
-        points(x = colnames(meanMatrix), 
-               y = meanMatrix[i,], 
-               type = "o", 
-               pch = i)
-        legend (x = min(timePoint), 
-                y = max(meanMatrix)-(i-1)*0.2, 
-                        legend = strainName[i], 
-                        pch = i, bty = "n")
-        }
+    } else { # draw the growth curve of the i th strain
+      points(x = colnames(meanMatrix), 
+             y = meanMatrix[i,], 
+             type = "o", 
+             pch = i)
+      legend (x = min(timePoint), 
+              y = max(meanMatrix)-(i-1)*0.2, 
+              legend = strainName[i], 
+              pch = i, bty = "n")
+    }
     i <- i + 1
   }
   box()
