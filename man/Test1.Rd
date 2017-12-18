@@ -13,8 +13,8 @@ BACTERIAL MOVING DISTANCE DATA
   A data frame with 18 observations on the following 3 variables.
   \describe{
     \item{\code{Strain}}{a character vector containg the name of tested strains}
-    \item{\code{Time}}{a numeric vector containing measuring timepoint}
-    \item{\code{Distance}}{a numeric vector containing measuring results}
+    \item{\code{Time}}{a numeric vector containing measuring timepoint in hour}
+    \item{\code{Distance}}{a numeric vector containing measuring results in centimeter}
   }
 }
 \keyword{datasets}

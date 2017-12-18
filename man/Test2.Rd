@@ -13,8 +13,9 @@ BACTERIAL GROWTH DATA
   A data frame with 72 observations on the following 3 variables.
   \describe{
     \item{\code{Strain}}{a character vector containing the name of tested strains}
-    \item{\code{Time}}{a numeric vector containing measuring timepoint}
-    \item{\code{OD600}}{a numeric vector containing measuring results}
+    \item{\code{Time}}{a numeric vector containing measuring timepoint in hour}
+    \item{\code{OD600}}{a numeric vector containing measuring results in OD600, 
+    OD600 itself is a normal unit in bacterial growth measuring}
   }
 }
 \keyword{datasets}
